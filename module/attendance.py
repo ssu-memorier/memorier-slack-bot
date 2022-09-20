@@ -1,7 +1,7 @@
 from module.utils import *
 
 workingTime = [10,10,0]            # 출근 시간(지각 처리 기준시간)
-coretime = [[17,0,0], [23,0,0]]     # 코어타임 (20:00:00~23:00:00)
+coretime = [[20,0,0], [23,0,0]]     # 코어타임 (20:00:00~23:00:00)
 
 # !출근
 def GoToWork(message, say):

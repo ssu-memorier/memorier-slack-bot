@@ -14,5 +14,5 @@ def helpCommend(message, say):
     for command, info in commandList.items():
         helpOutput += f"{command} : {info}\n"
     
-    printCommandLogs(message, "!도움")
+    printCommandLogs(message, "!도움")      # 서버에 log를 따로 남김
     say(text=helpOutput, channel = message['channel'])

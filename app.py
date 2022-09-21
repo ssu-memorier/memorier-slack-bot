@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-from module.utils import getCurrentSeoulTime, getSlackToken
-from module.help import helpCommend
 
+# Module Function
+from util.utils import getCurrentSeoulTime, getSlackToken
+from command.help import helpCommand
+from constants.constants import *       # 상수
+
+# Python Libraries
 import re
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
@@ -13,9 +17,9 @@ slackAppToken, slackBotToken = getSlackToken()
 app = App(token=slackBotToken)
     
 # !도움말
-@app.message(re.compile(("!도움")))
+@app.message(re.compile((HELP)))
 def say_comment_help(message, say):
-    helpCommend(message, say)
+    helpCommand(message, say)
 
 # 메인 진행 함수
 def main():
@@ -24,3 +28,4 @@ def main():
 # main 실행문
 if __name__ == "__main__":
     main()
+    

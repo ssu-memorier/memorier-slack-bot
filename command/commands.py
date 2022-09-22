@@ -4,7 +4,7 @@ from constants.COMMAND import *
 from command import help
 
 
-def getAttendanceCommand(app):
+def addAttendanceCommand(app):
 
     @app.message(re.compile(ATTENDANCE_COMMAND[HELP]))    # !도움말
     def say_comment_help(message, say):

@@ -1,4 +1,4 @@
-CHANNEL_ATTENDANCE = '출석-테스트'
+CHANNEL_ATTENDANCE = '출석-체크'
 
 # Command Keyword
 HELP, GTW, LTW, OW, LATE = "help", "GoToWork", "LeaveToWork", "OfflineWork", "late"

@@ -9,6 +9,14 @@ def printCommandLogs(message, command):  # console에 Command 명령 log를 기�
     print(f"{currentTime}\t{user}가 {command} 명령어를 사용하였습니다")
 
 
+# 코어타임 중에 퇴근/오프 명령어를 실행하는 경우 log에 기록
+def printCommandLogsInCoreTime(message, state):
+    user = message['user']
+    currentTime = getCurrentSeoulTime().strftime(DATE.DATE_FORMAT)
+    print(f"{currentTime}\t{user}가 {ATTENDANCE_COMMAND[state]} 명령어를 사용하였습니다")
+    print(CORETIME_LOG[state])
+
+
 def printWorkState(message, date, state):  # 출력할 메세지 생성기
     # Command가 실행된 날짜데이터(YY-MM-DD HH:MM:SS)
     commandWorkDate = date.strftime(DATE.DATE_FORMAT)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # User Defined Functions
-from command.commands import addAttendanceCommand, addHelpCommand
+from utils.manageCommands import addAllCommands
 from constants import TOKEN      # Slack App/Bot Token
 
 # Python Libraries
@@ -11,12 +11,12 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 # App Loading
 app = App(token=TOKEN.SLACK_BOT_TOKEN)
-addAttendanceCommand(app)       # 출석 관련 커맨드 작동
-addHelpCommand(app)     # 도움말 관련 커맨드 작동
+addAllCommands(app)       # 봇에서 실행하는 모든 커맨드 불러오기
 
 
 def main():  # Main Process
-    print("="*10, "SlackBot is started", "="*10, '\n'*2)       # slackbot 시작
+    print("="*10, "SlackBot is started", "=" *
+          10, '\n'*2)       # slackbot 시작 출력문
     SocketModeHandler(app, TOKEN.SLACK_APP_TOKEN).start()
 
 

@@ -14,10 +14,8 @@ def printWorkState(message, date, state):  # 출력할 메세지 생성기
     userID = message['user']        # 유저 ID
 
     if state == COMMAND.OW:  # 자리비움의 경우 시간까지 입력
-        tokens = message['text'].split()    # tokens = [자리비움, 시간]
-
-        # 공백문자를 기준으로 잘라낸 메세지 토큰에서 시간값을 가져옴
-        offTime = tokens[COMMAND.MESSAGE_TOKEN_TIME]
+        # tokens = [커맨드(자리비움), 시간]
+        [command, offTime] = message['text'].split()
 
         return f"[ <@{userID}> ] {commandWorkDate}\t{offTime}시간 {COMMAND.ATTENDANCE_COMMAND_NAME[state]}"
     else:

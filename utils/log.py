@@ -1,5 +1,4 @@
-from constants import DATE
-from constants.COMMAND import *
+from constants import DATE, COMMAND     # 날짜, 커맨드 상수
 from utils.date import getCurrentSeoulTime
 
 
@@ -14,12 +13,12 @@ def printWorkState(message, date, state):  # 출력할 메세지 생성기
     commandWorkDate = date.strftime(DATE.DATE_FORMAT)
     userID = message['user']        # 유저 ID
 
-    if state == OW:  # 자리비움의 경우 시간까지 입력
+    if state == COMMAND.OW:  # 자리비움의 경우 시간까지 입력
         tokens = message['text'].split()    # tokens = [자리비움, 시간]
 
         # 공백문자를 기준으로 잘라낸 메세지 토큰에서 시간값을 가져옴
-        offTime = tokens[MESSAGE_TOKEN_TIME]
+        offTime = tokens[COMMAND.MESSAGE_TOKEN_TIME]
 
-        return f"[ <@{userID}> ] {commandWorkDate}\t{offTime}시간 {ATTENDANCE_COMMAND[state]}"
+        return f"[ <@{userID}> ] {commandWorkDate}\t{offTime}시간 {COMMAND.ATTENDANCE_COMMAND[state]}"
     else:
-        return f"[ <@{userID}> ] {commandWorkDate}\t{ATTENDANCE_COMMAND[state]}"
+        return f"[ <@{userID}> ] {commandWorkDate}\t{COMMAND.ATTENDANCE_COMMAND[state]}"

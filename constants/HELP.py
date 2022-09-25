@@ -1,11 +1,12 @@
-from constants.COMMAND import *
+# from constants.COMMAND import *
+from constants import COMMAND
 
 
 COMMAND_HELP_MESSAGE = {        # !help command infomations
-    GTW: "현재시간으로 출근 처리가 진행됩니다.",
-    LTW: "현재시간으로 퇴근 처리가 진행됩니다.",
-    OW: "현재시간부터 해당 시간만큼 자리비움(오프) 상태로 처리됩니다.",
-    HELP: "실행가능한 전체 명령어에 대해 나오게 됩니다."
+    COMMAND.GTW: "현재시간으로 출근 처리가 진행됩니다.",
+    COMMAND.LTW: "현재시간으로 퇴근 처리가 진행됩니다.",
+    COMMAND.OW: "현재시간부터 해당 시간만큼 자리비움(오프) 상태로 처리됩니다.",
+    COMMAND.HELP: "실행가능한 전체 명령어에 대해 나오게 됩니다."
 }
 
 # !도움 Constants

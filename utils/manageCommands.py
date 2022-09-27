@@ -22,7 +22,7 @@ def addAttendanceCommand(app):      # 출석 관련 명령어 추가
     def sayCommentLeavetowork(message, say):
         attendance.LeaveToWork(message, say)
 
-    @app.message(re.compile(COMMAND.OFFLINE))  # !오프 (시간)
+    @app.message(re.compile(COMMAND.OFFLINE_REG))  # !오프 (시간)
     def sayCommentOff(message, say):
         attendance.OfflineWork(message, say)
 

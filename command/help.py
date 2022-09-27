@@ -1,4 +1,4 @@
-from util.log import printCommandLogs
+from utils.log import printCommandLogs
 from constants import COMMAND, HELP       # 상수
 
 

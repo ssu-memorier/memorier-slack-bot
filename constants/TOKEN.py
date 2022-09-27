@@ -1,5 +1,5 @@
 # TOKEN 관련 상수
-from util.token import getSlackToken
+from utils.token import getSlackToken
 
 # Constants
 TOKEN_LINK = 'assets/slack_token.json'

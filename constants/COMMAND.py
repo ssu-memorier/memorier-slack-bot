@@ -2,7 +2,7 @@ CHANNEL_ATTENDANCE = '출석-체크'
 
 # Command Keyword
 HELP, GTW, LTW, OW, LATE = "help", "GoToWork", "LeaveToWork", "OfflineWork", "late"
-OFFLINE = "!(오프|자리비움) \d"
+OFFLINE_REG = "!(오프|자리비움) \d"
 
 COMMAND_IDENTIFY = "!"
 ATTENDANCE_COMMAND_LIST = [HELP, GTW, LTW, OW]  # Command list

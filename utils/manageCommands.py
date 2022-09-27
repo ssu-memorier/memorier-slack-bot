@@ -7,18 +7,18 @@ from command import help, attendance      # help, 출석 관련 명령어
 def addHelpCommand(app):      # 도움말 관련 명령어 추가
 
     # !도움말
-    @app.message(re.compile(COMMAND.ATTENDANCE_COMMAND[COMMAND.HELP]))
+    @app.message(re.compile(COMMAND.HELP_REG))
     def sayCommentHelp(message, say):
         help.helpCommand(message, say)
 
 
 def addAttendanceCommand(app):      # 출석 관련 명령어 추가
 
-    @app.message(re.compile(COMMAND.ATTENDANCE_COMMAND[COMMAND.GTW]))  # !출근
+    @app.message(re.compile(COMMAND.GOTOWORK_REG))  # !출근
     def sayCommentGotowork(message, say):
         attendance.GoToWork(message, say)
 
-    @app.message(re.compile(COMMAND.ATTENDANCE_COMMAND[COMMAND.LTW]))  # !퇴근
+    @app.message(re.compile(COMMAND.LEAVETOWORK_REG))  # !퇴근
     def sayCommentLeavetowork(message, say):
         attendance.LeaveToWork(message, say)
 

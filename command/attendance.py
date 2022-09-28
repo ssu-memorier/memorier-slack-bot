@@ -1,39 +1,36 @@
-from constants import COMMAND, DATE     # 상수
+from constants import DATE
+from constants.COMMAND import ATTENDANCE     # 상수
 
-from utils.date import getCurrentSeoulTime, getCurrentSeoulHourMinutes
-from utils.log import printCommandLogs, printWorkState
+from utils.log import printCommandLogs, printWorkState, sayToAttendanceChannel
 
 
 def GoToWork(message, say):  # !출근
-    dates = getCurrentSeoulTime()       # 현재시간을 가져온다
-    hour, minutes = getCurrentSeoulHourMinutes()   # 명령어를 실행한 시(HH), 분(MM)
+    hour, minutes = message.HOUR, message.MINUTE   # 명령어를 실행한 시(HH), 분(MM)
 
     # 10시 10분 넘어서 출근을 하면 지각 처리
     if hour >= DATE.LATE_TIME[DATE.HOUR] and minutes >= DATE.LATE_TIME[DATE.MIN]:
-        state = COMMAND.LATE
+        state = ATTENDANCE.LATE
     else:
-        state = COMMAND.GTW
+        state = ATTENDANCE.GTW
 
-    workOutput = printWorkState(message, dates, state)
+    workOutput = printWorkState(message, state)
 
     printCommandLogs(
-        message, COMMAND.ATTENDANCE_COMMAND_NAME[state])      # 로그 출력
-    say(text=workOutput, channel=COMMAND.CHANNEL_ATTENDANCE)
+        message, ATTENDANCE.ATTENDANCE_COMMAND_NAME[state])      # 로그 출력
+    sayToAttendanceChannel(say, workOutput)
 
 
 def LeaveToWork(message, say):  # !퇴근
-    date = getCurrentSeoulTime()       # 현재시간을 가져온다
-    workOutput = printWorkState(message, date, COMMAND.LTW)
+    workOutput = printWorkState(message, ATTENDANCE.LTW)
 
     printCommandLogs(
-        message, COMMAND.ATTENDANCE_COMMAND_NAME[COMMAND.LTW])      # 로그 출력
-    say(text=workOutput, channel=COMMAND.CHANNEL_ATTENDANCE)
+        message, ATTENDANCE.ATTENDANCE_COMMAND_NAME[ATTENDANCE.LTW])      # 로그 출력
+    sayToAttendanceChannel(say, workOutput)
 
 
 def OfflineWork(message, say):  # !오프 (시간)
-    date = getCurrentSeoulTime()       # 현재시간을 가져온다
-    workOutput = printWorkState(message, date, COMMAND.OW)
+    workOutput = printWorkState(message, ATTENDANCE.OW)
 
     printCommandLogs(
-        message, COMMAND.ATTENDANCE_COMMAND_NAME[COMMAND.OW])      # 로그 출력
-    say(text=workOutput, channel=COMMAND.CHANNEL_ATTENDANCE)
+        message, ATTENDANCE.ATTENDANCE_COMMAND_NAME[ATTENDANCE.OW])      # 로그 출력
+    sayToAttendanceChannel(say, workOutput)

@@ -1,4 +1,4 @@
-CHANNEL_ATTENDANCE = '출석-테스트'
+CHANNEL_ATTENDANCE = '출석-체크'
 COMMAND_IDENTIFY = "!"
 
 # Attendance Command
@@ -27,8 +27,11 @@ HELP = "help"
 HELP_REG = "!도움"
 
 HELP_COMMAND_LIST = [HELP]  # Command list
+HELP_COMMAND_NAME = {
+    HELP: "도움"
+}  # Command list
 HELP_COMMAND_REGEX = {
-    HELP: COMMAND_IDENTIFY + HELP
+    HELP: COMMAND_IDENTIFY + HELP_COMMAND_NAME[HELP]
 }
 HELP_COMMAND_INFO = {        # !help command infomations
     GTW: "현재시간으로 출근 처리가 진행됩니다.",
@@ -42,4 +45,4 @@ HELP_HEADLINE = "\n< 명령어 도움말 >\n"  # !도움 Output Constants
 
 # 전체 Command 리스트
 COMMAND_LIST = [HELP_COMMAND_LIST, ATTENDANCE_COMMAND_LIST]
-COMMAND_REG_LIST = [ATTENDANCE_COMMAND_REGEX, HELP_COMMAND_REGEX]
+COMMAND_REG_LIST = [HELP_COMMAND_REGEX, ATTENDANCE_COMMAND_REGEX]

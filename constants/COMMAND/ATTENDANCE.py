@@ -1,5 +1,4 @@
-COMMAND_IDENTIFY = "!"
-
+from constants.COMMAND import IDENTIFIER
 # Attendance Command
 GTW, LTW, OW, LATE = "GoToWork", "LeaveToWork", "OfflineWork", "late"
 GOTOWORK_REG = "!출근"
@@ -14,8 +13,8 @@ COMMAND_NAME = {        # Command name list
     LATE: "지각"
 }
 COMMAND_REGEX = {        # Command Keyword
-    GTW: COMMAND_IDENTIFY + COMMAND_NAME[GTW],       # "!출근"
-    LTW: COMMAND_IDENTIFY + COMMAND_NAME[LTW],       # "!퇴근"
-    OW: COMMAND_IDENTIFY + COMMAND_NAME[OW],         # "!자리비움(오프)"
-    LATE: COMMAND_IDENTIFY + COMMAND_NAME[LATE]      # "!지각"
+    GTW: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[GTW],       # "!출근"
+    LTW: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[LTW],       # "!퇴근"
+    OW: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[OW],         # "!자리비움(오프)"
+    LATE: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[LATE]      # "!지각"
 }

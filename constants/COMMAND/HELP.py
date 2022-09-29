@@ -1,6 +1,4 @@
-from constants.COMMAND import ATTENDANCE
-
-COMMAND_IDENTIFY = "!"
+from constants.COMMAND import ATTENDANCE, IDENTIFIER
 
 # Help Command
 HELP = "help"
@@ -11,7 +9,7 @@ COMMAND_NAME = {
     HELP: "도움"
 }  # Command Name list
 COMMAND_REGEX = {
-    HELP: COMMAND_IDENTIFY + COMMAND_NAME[HELP]
+    HELP: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[HELP]
 }
 HELP_COMMAND_INFO = {        # !help command infomations
     ATTENDANCE.GTW: "현재시간으로 출근 처리가 진행됩니다.",

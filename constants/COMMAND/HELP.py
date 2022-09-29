@@ -6,12 +6,12 @@ COMMAND_IDENTIFY = "!"
 HELP = "help"
 HELP_REG = "!도움"
 
-HELP_COMMAND_LIST = [HELP]  # Command list
-HELP_COMMAND_NAME = {
+COMMAND_LIST = [HELP]  # Command list
+COMMAND_NAME = {
     HELP: "도움"
-}  # Command list
-HELP_COMMAND_REGEX = {
-    HELP: COMMAND_IDENTIFY + HELP_COMMAND_NAME[HELP]
+}  # Command Name list
+COMMAND_REGEX = {
+    HELP: COMMAND_IDENTIFY + COMMAND_NAME[HELP]
 }
 HELP_COMMAND_INFO = {        # !help command infomations
     ATTENDANCE.GTW: "현재시간으로 출근 처리가 진행됩니다.",

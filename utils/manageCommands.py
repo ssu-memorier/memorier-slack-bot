@@ -14,7 +14,7 @@ class AppMessage():     # app으로 부터 받은 메시지 정보를 관리하�
         # 명령어가 실행된 날짜값 저장
         self.ts = message['ts']     # timestamp
         self.date = date.ts2datetime(float(message['ts']))      # datetime
-        self.HOUR, self.MINUTE = date.getTs2HourMinute(
+        self.hour, self.minute = date.getTs2HourMinute(
             float(message['ts']))    # HH, MM
 
 
@@ -29,15 +29,15 @@ def addAttendanceCommand(app):      # 출석 관련 명령어 추가
 
     @app.message(re.compile(ATTENDANCE.GOTOWORK_REG))  # !출근
     def sayCommentGotowork(message, say):
-        attendance.GoToWork(AppMessage(message), say)
+        attendance.goToWork(AppMessage(message), say)
 
     @app.message(re.compile(ATTENDANCE.LEAVETOWORK_REG))  # !퇴근
     def sayCommentLeavetowork(message, say):
-        attendance.LeaveToWork(AppMessage(message), say)
+        attendance.leaveToWork(AppMessage(message), say)
 
     @app.message(re.compile(ATTENDANCE.OFFLINE_REG))  # !오프 (시간)
     def sayCommentOff(message, say):
-        attendance.OfflineWork(AppMessage(message), say)
+        attendance.offlineWork(AppMessage(message), say)
 
 
 def addAllCommands(app):        # 모든 Command가 실행되도록 추가

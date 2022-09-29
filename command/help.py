@@ -12,5 +12,5 @@ def helpCommand(message, say):      # 도움
 
     # 서버에 log를 따로 남김
     printCommandLogs(
-        message, HELP.HELP_COMMAND_REGEX[HELP.HELP])
+        message, HELP.COMMAND_REGEX[HELP.HELP])
     sayToHelpChannel(say, helpOutput)

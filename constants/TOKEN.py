@@ -3,7 +3,6 @@ from utils.token import getSlackToken
 
 # Constants to get TOKEN
 TOKEN_LINK = 'assets/slack_token.json'
-USER_LINK = 'assets/user_info.json'
 READ_MODE = 'r'
 
 # token

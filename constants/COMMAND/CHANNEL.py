@@ -1,4 +1,4 @@
-from utils.getItem import getBotChannel
+from utils.token import getBotChannel
 from constants import TOKEN
 
 ATTENDANCE = '출석-체크'

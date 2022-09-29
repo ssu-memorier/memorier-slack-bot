@@ -1,4 +1,4 @@
-from utils.log import printCommandLogs, sayToHelpChannel
+from utils.log import printCommandLogs
 from constants.COMMAND import BASE, HELP      # 상수
 
 
@@ -11,6 +11,5 @@ def helpCommand(message, say):      # 도움
             helpOutput += f"{rgx[command]} : {HELP.HELP_COMMAND_INFO[command]}\n"
 
     # 서버에 log를 따로 남김
-    printCommandLogs(
-        message, HELP.COMMAND_REGEX[HELP.HELP])
-    sayToHelpChannel(say, helpOutput)
+    printCommandLogs(message, HELP.COMMAND_REGEX[HELP.HELP])
+    return helpOutput

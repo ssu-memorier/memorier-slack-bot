@@ -1,7 +1,7 @@
 from constants import DATE
 from constants.COMMAND import ATTENDANCE     # 상수
 
-from utils.log import printCommandLogs, sayWorkState, sayToAttendanceChannel
+from utils.log import printCommandLogs, printWorkState
 
 
 def goToWork(message, say):  # !출근
@@ -13,18 +13,23 @@ def goToWork(message, say):  # !출근
     else:
         state = ATTENDANCE.GTW
 
-    sayWorkState(say, message, state)   # 채널 출력
-    printCommandLogs(
-        message, ATTENDANCE.COMMAND_NAME[state])      # 로그 출력
+    outputText = printWorkState(say, message, state)   # 채널 출력
+    printCommandLogs(message, ATTENDANCE.COMMAND_NAME[state])      # 로그 출력
+
+    return outputText
 
 
 def leaveToWork(message, say):  # !퇴근
-    sayWorkState(say, message, ATTENDANCE.LTW)   # 채널 출력
+    outputText = printWorkState(say, message, ATTENDANCE.LTW)   # 채널 출력
     printCommandLogs(
         message, ATTENDANCE.COMMAND_NAME[ATTENDANCE.LTW])      # 로그 출력
 
+    return outputText
+
 
 def offlineWork(message, say):  # !오프 (시간)
-    sayWorkState(say, message, ATTENDANCE.OW)   # 채널 출력
+    outputText = printWorkState(say, message, ATTENDANCE.OW)   # 채널 출력
     printCommandLogs(
         message, ATTENDANCE.COMMAND_NAME[ATTENDANCE.OW])      # 로그 출력
+
+    return outputText

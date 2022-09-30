@@ -8,7 +8,7 @@ def printCommandLogs(message, command):  # console에 Command 명령 log를 기�
         f"{currentTime}\t{USER.NAME[message.userID]} 님이 {command} 명령어를 사용하였습니다")
 
 
-def printWorkState(say, message, state):  # 채널에 출력할 메세지 생성기
+def printWorkState(message, state):  # 채널에 출력할 메세지 생성기
     # date : Command가 실행된 날짜데이터(YY-MM-DD HH:MM:SS)
 
     if state == ATTENDANCE.OW:  # 자리비움의 경우 시간까지 입력

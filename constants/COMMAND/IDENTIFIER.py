@@ -1,1 +1,1 @@
-COMMAND_IDENTIFIER = "!"
+COMMAND = "!"

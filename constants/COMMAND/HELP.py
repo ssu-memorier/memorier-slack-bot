@@ -9,7 +9,7 @@ COMMAND_NAME = {
     HELP: "도움"
 }  # Command Name list
 COMMAND_REGEX = {
-    HELP: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[HELP]
+    HELP: IDENTIFIER.COMMAND + COMMAND_NAME[HELP]
 }
 HELP_COMMAND_INFO = {        # !help command infomations
     ATTENDANCE.GTW: "현재시간으로 출근 처리가 진행됩니다.",

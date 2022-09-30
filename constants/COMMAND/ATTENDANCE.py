@@ -13,8 +13,8 @@ COMMAND_NAME = {        # Command name list
     LATE: "지각"
 }
 COMMAND_REGEX = {        # Command Keyword
-    GTW: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[GTW],       # "!출근"
-    LTW: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[LTW],       # "!퇴근"
-    OW: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[OW],         # "!자리비움(오프)"
-    LATE: IDENTIFIER.COMMAND_IDENTIFIER + COMMAND_NAME[LATE]      # "!지각"
+    GTW: IDENTIFIER.COMMAND + COMMAND_NAME[GTW],       # "!출근"
+    LTW: IDENTIFIER.COMMAND + COMMAND_NAME[LTW],       # "!퇴근"
+    OW: IDENTIFIER.COMMAND + COMMAND_NAME[OW],         # "!자리비움(오프)"
+    LATE: IDENTIFIER.COMMAND + COMMAND_NAME[LATE]      # "!지각"
 }

@@ -1,5 +1,5 @@
-from utils.token import getBotChannel
+from utils.getId import getBotChannelId
 from constants import TOKEN
 
 ATTENDANCE = '출석-체크'
-BOT = getBotChannel(TOKEN.TOKEN_LINK, TOKEN.READ_MODE)
+BOT = getBotChannelId(TOKEN.TOKEN_LINK, TOKEN.READ_MODE)

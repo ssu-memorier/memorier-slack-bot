@@ -1,6 +1,6 @@
 import re       # 정규식
 
-from constants.COMMAND import HELP, ATTENDANCE
+from constants.COMMAND import IDENTIFIER
 from utils import date
 from utils.log import sayHelpChannel, sayAttendanceChannel
 from command import help, attendance      # help, 출석 관련 명령어
@@ -21,7 +21,7 @@ class AppMessage():     # app으로 부터 받은 메시지 정보를 관리하�
 
 def addHelpCommand(app):      # 도움말 관련 명령어 추가
     # !도움말
-    @app.message(re.compile(HELP.HELP_REG))
+    @app.message(re.compile(IDENTIFIER.HELP))
     def sayCommentHelp(message, say):
         helpOutput = help.helpCommand(AppMessage(message))
         sayHelpChannel(say, helpOutput)
@@ -29,17 +29,17 @@ def addHelpCommand(app):      # 도움말 관련 명령어 추가
 
 def addAttendanceCommand(app):      # 출석 관련 명령어 추가
 
-    @app.message(re.compile(ATTENDANCE.GOTOWORK_REG))  # !출근
+    @app.message(re.compile(IDENTIFIER.GOTOWORK))  # !출근
     def sayCommentGotowork(message, say):
         attendanceOutput = attendance.goToWork(AppMessage(message))
         sayAttendanceChannel(say, attendanceOutput)
 
-    @app.message(re.compile(ATTENDANCE.LEAVETOWORK_REG))  # !퇴근
+    @app.message(re.compile(IDENTIFIER.LEAVETOWORK))  # !퇴근
     def sayCommentLeavetowork(message, say):
         attendanceOutput = attendance.leaveToWork(AppMessage(message))
         sayAttendanceChannel(say, attendanceOutput)
 
-    @app.message(re.compile(ATTENDANCE.OFFLINE_REG))  # !오프 (시간)
+    @app.message(re.compile(IDENTIFIER.OFFLINE))  # !오프 (시간)
     def sayCommentOff(message, say):
         attendanceOutput = attendance.offlineWork(AppMessage(message))
         sayAttendanceChannel(say, attendanceOutput)

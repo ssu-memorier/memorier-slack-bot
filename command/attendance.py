@@ -1,38 +1,35 @@
-from constants import COMMAND, DATE     # 상수
+from constants import DATE
+from constants.COMMAND import ATTENDANCE     # 상수
 
-from utils.date import getCurrentSeoulTime
 from utils.log import printCommandLogs, printWorkState
 
 
-def GoToWork(message, say):  # !출근
-    dates = getCurrentSeoulTime()       # 현재시간을 가져온다
-    hour, minutes = dates.time().hour, dates.time().minute   # 명령어를 실행한 시(HH), 분(MM)
+def goToWork(message):  # !출근
+    hour, minutes = message.hour, message.minute   # 명령어를 실행한 시(HH), 분(MM)
 
     # 10시 10분 넘어서 출근을 하면 지각 처리
     if hour >= DATE.LATE_TIME[DATE.HOUR] and minutes >= DATE.LATE_TIME[DATE.MIN]:
-        state = COMMAND.LATE
+        state = ATTENDANCE.LATE
     else:
-        state = COMMAND.GTW
+        state = ATTENDANCE.GTW
 
-    workOutput = printWorkState(message, dates, state)
+    outputText = printWorkState(message, state)   # 채널 출력
+    printCommandLogs(message, ATTENDANCE.COMMAND_NAME[state])      # 로그 출력
 
-    printCommandLogs(message, COMMAND.ATTENDANCE_COMMAND[state])      # 로그 출력
-    say(text=workOutput, channel=COMMAND.CHANNEL_ATTENDANCE)
+    return outputText
 
 
-def LeaveToWork(message, say):  # !퇴근
-    date = getCurrentSeoulTime()       # 현재시간을 가져온다
-    workOutput = printWorkState(message, date, COMMAND.LTW)
-
+def leaveToWork(message):  # !퇴근
+    outputText = printWorkState(message, ATTENDANCE.LTW)   # 채널 출력
     printCommandLogs(
-        message, COMMAND.ATTENDANCE_COMMAND[COMMAND.LTW])      # 로그 출력
-    say(text=workOutput, channel=COMMAND.CHANNEL_ATTENDANCE)
+        message, ATTENDANCE.COMMAND_NAME[ATTENDANCE.LTW])      # 로그 출력
+
+    return outputText
 
 
-def OfflineWork(message, say):  # !오프 (시간)
-    date = getCurrentSeoulTime()       # 현재시간을 가져온다
-    workOutput = printWorkState(message, date, COMMAND.OW)
-
+def offlineWork(message):  # !오프 (시간)
+    outputText = printWorkState(message, ATTENDANCE.OW)   # 채널 출력
     printCommandLogs(
-        message, COMMAND.ATTENDANCE_COMMAND[COMMAND.OW])      # 로그 출력
-    say(text=workOutput, channel=COMMAND.CHANNEL_ATTENDANCE)
+        message, ATTENDANCE.COMMAND_NAME[ATTENDANCE.OW])      # 로그 출력
+
+    return outputText

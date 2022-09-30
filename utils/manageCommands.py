@@ -1,30 +1,48 @@
 import re       # 정규식
 
-from constants import COMMAND
+from constants.COMMAND import IDENTIFIER
+from utils import date
+from utils.log import sayHelpChannel, sayAttendanceChannel
 from command import help, attendance      # help, 출석 관련 명령어
 
 
-def addHelpCommand(app):      # 도움말 관련 명령어 추가
+class AppMessage():     # app으로 부터 받은 메시지 정보를 관리하는 클래스
+    def __init__(self, message):
+        self.channel = message['channel']
+        self.text = message['text']
+        self.userID = message['user']
 
+        # 명령어가 실행된 날짜값 저장
+        self.ts = message['ts']     # timestamp
+        self.date = date.ts2datetime(float(message['ts']))      # datetime
+        self.hour, self.minute = date.getTs2HourMinute(
+            float(message['ts']))    # HH, MM
+
+
+def addHelpCommand(app):      # 도움말 관련 명령어 추가
     # !도움말
-    @app.message(re.compile(COMMAND.HELP_REG))
+    @app.message(re.compile(IDENTIFIER.HELP))
     def sayCommentHelp(message, say):
-        help.helpCommand(message, say)
+        helpOutput = help.helpCommand(AppMessage(message))
+        sayHelpChannel(say, helpOutput)
 
 
 def addAttendanceCommand(app):      # 출석 관련 명령어 추가
 
-    @app.message(re.compile(COMMAND.GOTOWORK_REG))  # !출근
+    @app.message(re.compile(IDENTIFIER.GOTOWORK))  # !출근
     def sayCommentGotowork(message, say):
-        attendance.GoToWork(message, say)
+        attendanceOutput = attendance.goToWork(AppMessage(message))
+        sayAttendanceChannel(say, attendanceOutput)
 
-    @app.message(re.compile(COMMAND.LEAVETOWORK_REG))  # !퇴근
+    @app.message(re.compile(IDENTIFIER.LEAVETOWORK))  # !퇴근
     def sayCommentLeavetowork(message, say):
-        attendance.LeaveToWork(message, say)
+        attendanceOutput = attendance.leaveToWork(AppMessage(message))
+        sayAttendanceChannel(say, attendanceOutput)
 
-    @app.message(re.compile(COMMAND.OFFLINE_REG))  # !오프 (시간)
+    @app.message(re.compile(IDENTIFIER.OFFLINE))  # !오프 (시간)
     def sayCommentOff(message, say):
-        attendance.OfflineWork(message, say)
+        attendanceOutput = attendance.offlineWork(AppMessage(message))
+        sayAttendanceChannel(say, attendanceOutput)
 
 
 def addAllCommands(app):        # 모든 Command가 실행되도록 추가

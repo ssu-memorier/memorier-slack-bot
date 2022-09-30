@@ -15,8 +15,7 @@ addAllCommands(app)       # 봇에서 실행하는 모든 커맨드 불러오기
 
 
 def main():  # Main Process
-    print("="*10, "SlackBot is started", "=" *
-          10, '\n'*2)       # slackbot 시작 출력문
+    print("="*10, "SlackBot is started", "="*10, '\n')       # slackbot 시작 출력문
     SocketModeHandler(app, TOKEN.SLACK_APP_TOKEN).start()
 
 

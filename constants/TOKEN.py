@@ -1,7 +1,7 @@
 # TOKEN 관련 상수
 from utils.token import getSlackToken
 
-# Constants
+# Constants to get TOKEN
 TOKEN_LINK = 'assets/slack_token.json'
 READ_MODE = 'r'
 

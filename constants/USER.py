@@ -1,4 +1,4 @@
-from utils.getItem import getUserId
+from utils.getId import getUserId
 from constants import TOKEN
 
 USER_LINK = 'assets/user_info.json'

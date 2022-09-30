@@ -31,7 +31,7 @@ def addEMCommands(app):      # Commands startswith '!'
         elif isAttendanceCommand(message):   # Attendance 명령어 확인
             controlAttendanceCommand(message, say)
         else:
-            printError.commandExecutionError(say)
+            printError.commandInputError(say)
 
 
 def controlHelpCommand(message, say):      # 도움 관련 명령어 제어문
@@ -50,7 +50,7 @@ def controlAttendanceCommand(message, say):      # 출석 관련 명령어 제�
     elif message.text.startswith(IDENTIFIER.OFFLINE):   # !오프
         text, command = sayCommand.Offline(message, say)
     else:
-        printError.commandFormatError(say)
+        printError.commandInputError(say)   # 명령어 입력 에러
         command = BASE.ERROR
 
     if command != BASE.ERROR:

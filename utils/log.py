@@ -13,7 +13,7 @@ def printWorkState(message, state):  # 채널에 출력할 메세지 생성기
 
     if state == ATTENDANCE.OW:  # 자리비움의 경우 시간까지 입력
         # tokens = [커맨드(자리비움), 시간]
-        [command, offTime] = message.text.split()
+        [_, offTime] = message.text.split()
 
         return f"[ <@{message.userID}> ] {message.date}\t{offTime}시간 {ATTENDANCE.COMMAND_NAME[state]}"
     else:

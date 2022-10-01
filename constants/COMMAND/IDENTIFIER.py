@@ -4,4 +4,7 @@ COMMAND = "!"
 HELP = "!도움"
 GOTOWORK = "!출근"
 LEAVETOWORK = "!퇴근"
-OFFLINE = "!오프 \d"
+OFFLINE = "!오프"
+
+
+ATTENDANCE = [GOTOWORK, LEAVETOWORK, OFFLINE]

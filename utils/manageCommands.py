@@ -24,18 +24,18 @@ def addAllCommands(app):        # 모든 Command가 실행되도록 추가
 def addEMCommands(app):      # Commands startswith '!'
     @app.message(re.compile("^[!]"))
     def CommandWork(message, say):
-        message = AppMessage(message)   # 객체 변환
+        msg = AppMessage(message)   # 객체 변환
 
-        if isHelpCommand(message):   # Help 명령어 확인
-            controlHelpCommand(message, say)
-        elif isAttendanceCommand(message):   # Attendance 명령어 확인
-            controlAttendanceCommand(message, say)
+        if isHelpCommand(msg):   # Help 명령어 확인
+            controlHelpCommand(msg, say)
+        elif isAttendanceCommand(msg):   # Attendance 명령어 확인
+            controlAttendanceCommand(msg, say)
         else:
             printError.commandInputError(say)
 
 
 def controlHelpCommand(message, say):      # 도움 관련 명령어 제어문
-    text, command = sayCommand.Help(message, say)
+    text, command = sayCommand.helps(message, say)
 
     if command != BASE.ERROR:
         log.sayHelpChannel(say, text)     # 채널에 출력
@@ -44,11 +44,11 @@ def controlHelpCommand(message, say):      # 도움 관련 명령어 제어문
 
 def controlAttendanceCommand(message, say):      # 출석 관련 명령어 제어문
     if message.text.startswith(IDENTIFIER.GOTOWORK):    # !출근
-        text, command = sayCommand.Gotowork(message, say)
+        text, command = sayCommand.gotowork(message, say)
     elif message.text.startswith(IDENTIFIER.LEAVETOWORK):  # !퇴근
-        text, command = sayCommand.Leavetowork(message, say)
+        text, command = sayCommand.leavetowork(message, say)
     elif message.text.startswith(IDENTIFIER.OFFLINE):   # !오프
-        text, command = sayCommand.Offline(message, say)
+        text, command = sayCommand.offline(message, say)
     else:
         printError.commandInputError(say)   # 명령어 입력 에러
         command = BASE.ERROR

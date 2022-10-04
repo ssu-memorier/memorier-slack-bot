@@ -1,5 +1,5 @@
 from constants import DATE
-from constants.COMMAND import ATTENDANCE     # 상수
+from constants.COMMAND import ATTENDANCE, IDENTIFIER     # 상수
 
 from utils import log, date
 
@@ -30,23 +30,26 @@ def offlineWork(message):  # !오프 (시간)
 ''' 명령어 에러 체크 '''
 
 
-def errorCheckGoToWork(message):    # GoToWork 명령어가 제대로 들어왔는지 확인
+def goToWorkErrorCheck(message):    # GoToWork 명령어가 제대로 들어왔는지 확인
     messageToken = message.text.split()
-    if messageToken[0] != ATTENDANCE.COMMAND_IDENTIFIER[ATTENDANCE.GTW]:    # 설마 명령어가 잘못되지는 않았겠지?
+    # 설마 명령어가 잘못되지는 않았겠지?
+    if messageToken[IDENTIFIER.COMMAND_INDEX] != ATTENDANCE.COMMAND_IDENTIFIER[ATTENDANCE.GTW]:
         return False
     return True if len(messageToken) == 1 else False
 
 
-def errorCheckLeaveToWork(message):    # LeaveToWork 명령어가 제대로 들어왔는지 확인
+def leaveToWorkErrorCheck(message):    # LeaveToWork 명령어가 제대로 들어왔는지 확인
     messageToken = message.text.split()
-    if messageToken[0] != ATTENDANCE.COMMAND_IDENTIFIER[ATTENDANCE.LTW]:    # 설마 명령어가 잘못되지는 않았겠지?
+    # 설마 명령어가 잘못되지는 않았겠지?
+    if messageToken[IDENTIFIER.COMMAND_INDEX] != ATTENDANCE.COMMAND_IDENTIFIER[ATTENDANCE.LTW]:
         return False
     return True if len(messageToken) == 1 else False
 
 
-def errorCheckOfflineWork(message):    # OfflineWork 명령어가 제대로 들어왔는지 확인
+def offlineWorkErrorCheck(message):    # OfflineWork 명령어가 제대로 들어왔는지 확인
     # 자리비움 예약 미구현 상태
     messageToken = message.text.split()
-    if messageToken[0] != ATTENDANCE.COMMAND_IDENTIFIER[ATTENDANCE.OW]:    # 설마 명령어가 잘못되지는 않았겠지?
+    # 설마 명령어가 잘못되지는 않았겠지?
+    if messageToken[IDENTIFIER.COMMAND_INDEX] != ATTENDANCE.COMMAND_IDENTIFIER[ATTENDANCE.OW]:
         return False
-    return True if (len(messageToken) == 2) and (messageToken[1].isdigit()) else False
+    return True if (len(messageToken) == 2) and (messageToken[IDENTIFIER.SUBARGS_INDEX].isdigit()) else False

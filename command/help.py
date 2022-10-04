@@ -1,5 +1,5 @@
 from utils.log import printCommandLogs
-from constants.COMMAND import BASE, HELP      # 상수
+from constants.COMMAND import BASE, HELP, IDENTIFIER      # 상수
 
 
 def helpCommand():      # 도움
@@ -13,8 +13,9 @@ def helpCommand():      # 도움
     return helpOutput, HELP.COMMAND_IDENTIFIER[HELP.COMMAND]
 
 
-def errorCheckHelp(message):    # LeaveToWork 명령어가 제대로 들어왔는지 확인
+def helpErrorCheck(message):    # LeaveToWork 명령어가 제대로 들어왔는지 확인
     messageToken = message.text.split()
-    if messageToken[0] != HELP.COMMAND_IDENTIFIER[HELP.COMMAND]:    # 설마 명령어가 잘못되지는 않았겠지?
+    # 설마 명령어가 잘못되지는 않았겠지?
+    if messageToken[IDENTIFIER.COMMAND_INDEX] != HELP.COMMAND_IDENTIFIER[HELP.COMMAND]:
         return False
     return True if len(messageToken) == 1 else False

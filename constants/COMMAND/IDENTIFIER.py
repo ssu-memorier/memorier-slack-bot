@@ -1,6 +1,6 @@
 COMMAND = "!"
-COMMAND_INDEX = 0
-SUBARGS_INDEX = 1
+COMMAND_INDEX = 0   # 명령어 인덱스
+SUBARGS_INDEX = 1   # 매개변수 인덱스
 
 # Command Identifier
 HELP = "!도움"

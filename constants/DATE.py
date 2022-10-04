@@ -19,8 +19,16 @@ ATTENDANCE_TIME = {
 
 CORE_TIME = {
     START_TIME: {
-        HOUR: 20, MIN: 00
+        HOUR: 20, MIN: 0
     }, END_TIME: {
-        HOUR: 23, MIN: 00
+        HOUR: 23, MIN: 0
     }
 }       # 코어 타임
+
+SLEEPING_TIME = {
+    START_TIME: {
+        HOUR: 0, MIN: 0
+    }, END_TIME: {
+        HOUR: 9, MIN: 00
+    }
+}     # 출근 할 수 없는 취침시간

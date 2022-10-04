@@ -1,6 +1,6 @@
 from constants.COMMAND import IDENTIFIER
 # Attendance Command
-GTW, LTW, OW, LATE = "GoToWork", "LeaveToWork", "OfflineWork", "late"
+GTW, LTW, OW, LATE = "GoToWork", "LeaveToWork", "OfflineWork", "LateToWork"
 
 COMMAND_NAME = {        # Command name list
     GTW: "출근",

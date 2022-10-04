@@ -2,7 +2,11 @@
 from datetime import datetime
 import time
 from pytz import timezone
+
 from constants import DATE
+
+
+''' Get datetime using timezone '''
 
 
 def getCityTime(city):      # 도시 시간 구하는 함수 (추후 사용 예정)
@@ -14,6 +18,9 @@ def getNowCityHourMinutes(city):      # 도시 시분 구하는 함수 (추후 �
     return times.time().hour, times.time().minute
 
 
+''' timestamp <- convert -> datetime '''
+
+
 def ts2datetime(ts):        # Timestamp to Datetime
     return datetime.fromtimestamp(ts, timezone(DATE.ASIA_SEOUL)).strftime(DATE.DATE_FORMAT)
 
@@ -21,6 +28,9 @@ def ts2datetime(ts):        # Timestamp to Datetime
 def getTs2HourMinute(ts):        # Timestamp to get Hour, Minute
     date = datetime.fromtimestamp(ts, timezone(DATE.ASIA_SEOUL)).time()
     return date.hour, date.minute
+
+
+''' Calculate the time between '''
 
 
 def isTimeInBetween(timestamp, baseTime):   # 해당 시간이 구하고자하는 시간 사이에 있는가

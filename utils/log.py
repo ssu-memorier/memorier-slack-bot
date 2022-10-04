@@ -1,5 +1,5 @@
-from constants import USER
-from constants.COMMAND import ATTENDANCE, CHANNEL
+from constants import CHANNEL, USER
+from constants.COMMAND import ATTENDANCE
 
 
 def printCommandLogs(message, command):  # console에 Command 명령 log를 기록

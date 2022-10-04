@@ -1,11 +1,11 @@
-from constants.COMMAND import CHANNEL
+from constants import CHANNEL, ERROR
 
 
 def commandFormatError(say):       # 명령어 형식 에러
-    printText = "해당 명령어의 형식은 잘못된 형식입니다. 다시 확인하시고 입력바랍니다"
+    printText = ERROR.FORMATERROR_TEXT
     say(text=printText, channel=CHANNEL.BOT)
 
 
 def commandInputError(say):    # 명령어 실행 에러
-    printText = "해당 명령어는 잘못된 명령어입니다. 다시 확인하시고 입력바랍니다"
+    printText = ERROR.INPUTERROR_TEXT
     say(text=printText, channel=CHANNEL.BOT)

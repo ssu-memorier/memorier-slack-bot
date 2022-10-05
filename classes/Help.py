@@ -21,7 +21,8 @@ class Help(Command):     # 도움 커맨드
         else:
             output = error.sayError(
                 self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
-        self.output = output
+
+        return output
 
     def getHelpMessage(self):
         output = HELP.HELP_HEADLINE

@@ -31,7 +31,7 @@ class Attendance(Command):     # 출석 커맨드
             output = error.sayError(
                 self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
 
-        self.output = output
+        return output
 
     '''
         식별자와 커맨드명을 리턴해 주는 함수

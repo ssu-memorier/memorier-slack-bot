@@ -25,12 +25,13 @@ class Command():       # 기본 커맨드 클래스
         else:
             output = error.sayError(
                 self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
-        self.output = output
+
+        return output
 
     def sayCommand(self):      # 커맨드 출력
-        self.makeOutput()
-        if self.output != ERROR.ERROR_TAG:
-            self.sayToChannel(self.output)     # 채널에 출력
+        output = self.makeOutput()
+        if output != ERROR.ERROR_TAG:
+            self.sayToChannel(output)     # 채널에 출력
             log.printCommandLogs(self.message, self.command)    # 콘솔에 로그 출력
 
     def sayToChannel(self, text):      # 채널 출력

@@ -3,8 +3,8 @@ import re       # 정규식
 from constants import ERROR
 from utils import error
 
-from command.commands import AppMessage
-from command import help, attendance
+from classes import AppMessage
+from commands import help, attendance
 
 
 def addAllCommands(app):        # 모든 Command가 실행되도록 추가

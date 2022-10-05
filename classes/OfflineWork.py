@@ -40,11 +40,9 @@ class OfflineWork(Attendance):  # !오프 (시간)
     def isNotAvailableOffTime(self):   # 오프시간이 근무시간(8시간) 초과인 경우 에러
         messageToken = self.message.text.split()
         if not messageToken[ATTENDANCE.OFFLINE_TIME_INDEX].isdigit():
-            print(1)
             return True
         elif int(messageToken[ATTENDANCE.OFFLINE_TIME_INDEX]) > DATE.WORKINGHOUR or \
                 int(messageToken[ATTENDANCE.OFFLINE_TIME_INDEX]) <= 0:
-            print(11)
             return True
         else:
             return False

@@ -3,7 +3,8 @@ import re       # 정규식
 from constants import ERROR
 from utils import error
 
-from classes import AppMessage
+from classes.AppMessge import AppMessage
+from classes.Help import Help
 from commands import help, attendance
 
 
@@ -17,8 +18,11 @@ def addEMCommands(app):      # Commands startswith '!'
         msg = AppMessage(message)   # 객체 변환
 
         if help.isHelpCommand(msg):   # Help 명령어 확인
-            help.controlHelpCommand(msg, say)
+            command = Help(msg, say)
         elif attendance.isAttendanceCommand(msg):   # Attendance 명령어 확인
-            attendance.controlAttendanceCommand(msg, say)
+            command = attendance.createAttendanceCommand(msg, say)
         else:
             error.sayError(say, ERROR.INPUTERROR_TEXT)
+            return
+
+        command.sayCommand()

@@ -1,4 +1,4 @@
-from classes import Attendance
+from classes.Attendance import Attendance
 
 
 class LeaveToWork(Attendance):  # !퇴근

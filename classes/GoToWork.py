@@ -1,8 +1,8 @@
 from constants.COMMAND import ATTENDANCE
 from constants import DATE, ERROR
 
-from utils import date, error, log
-from classes import Attendance
+from utils import date, error
+from classes.Attendance import Attendance
 
 
 class GoToWork(Attendance):  # !출근
@@ -24,19 +24,11 @@ class GoToWork(Attendance):  # !출근
         else:
             self.command = ATTENDANCE.LATE
 
-    def sayCommand(self):      # 취침시간 확인 추가
+    def makeOutput(self):      # 취침시간 확인 추가
         if date.isTimeInBetween(self.message.ts, DATE.SLEEPING_TIME):
             output = error.sayError(
                 self.say, ERROR.SLEEPING_TEXT)  # 취침시간
-        elif self.checkError():     # 에러 체크 진행
-            output = self.getTextForChannel()
-        else:
-            output = error.sayError(
-                self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
-
-        if output != ERROR.ERROR_TAG:
-            self.sayToChannel(output)     # 채널에 출력
-            log.printCommandLogs(self.message, self.command)    # 콘솔에 로그 출력
+        super().makeOutput()
 
     def getAttendanceMessage(self):
         self.isLate()       # 지각인지 확인

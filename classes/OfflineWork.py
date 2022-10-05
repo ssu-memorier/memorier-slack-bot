@@ -1,4 +1,4 @@
-from classes import Attendance
+from classes.Attendance import Attendance
 from constants.COMMAND import IDENTIFIER
 
 

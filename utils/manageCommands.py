@@ -8,11 +8,7 @@ from classes.Help import Help
 from commands import help, attendance
 
 
-def addAllCommands(app):        # 모든 Command가 실행되도록 추가
-    addEMCommands(app)       # '!'로 시작하는 명령어 추가
-
-
-def addEMCommands(app):      # Commands startswith '!'
+def addAllCommands(app):      # 모든 Command가 실행되도록 추가
     @app.message(re.compile("^[!]"))
     def CommandWork(message, say):
         msg = AppMessage(message)   # 객체 변환

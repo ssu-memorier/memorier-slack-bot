@@ -14,7 +14,7 @@ COMMAND_IDENTIFIER = {        # Command Identifier
 HELP_COMMAND_INFO = {        # !help command infomations
     ATTENDANCE.GTW: "현재시간으로 출근 처리가 진행됩니다.",
     ATTENDANCE.LTW: "현재시간으로 퇴근 처리가 진행됩니다.",
-    ATTENDANCE.OW: "현재시간부터 해당 시간만큼 자리비움(오프) 상태로 처리됩니다.",
+    ATTENDANCE.OW: "현재시간부터 해당 시간만큼 오프 처리됩니다. (예약기능 포함)",
     COMMAND: "실행 가능한 전체 명령어에 대해 알려줍니다."
 }
 

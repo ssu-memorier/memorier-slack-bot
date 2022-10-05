@@ -1,11 +1,11 @@
 from constants import CHANNEL
 from constants.COMMAND import ATTENDANCE
-from classes import Commands
+from classes import Command
 
 
-class Attendance(Commands):     # 출석 커맨드
+class Attendance(Command):     # 출석 커맨드
     def __init__(self, message, say):
-        Commands.__init__(self, message, say)
+        Command.__init__(self, message, say)
 
     def sayToChannel(self, text):  # 채널에 메세지 출력
         self.say(text=text, channel=CHANNEL.ATTENDANCE)

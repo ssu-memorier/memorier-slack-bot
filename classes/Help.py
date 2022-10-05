@@ -1,10 +1,10 @@
-from classes import Commands
+from classes import Command
 from constants.COMMAND import HELP, BASE
 
 
-class Help(Commands):     # 도움 커맨드
+class Help(Command):     # 도움 커맨드
     def __init__(self, message, say):
-        Commands.__init__(self, message, say)
+        Command.__init__(self, message, say)
 
     def checkError(self):
         messageToken = self.message.text.split()

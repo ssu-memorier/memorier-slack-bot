@@ -1,4 +1,6 @@
-from classes import GoToWork, LeaveToWork, OfflineWork
+from classes.GoToWork import GoToWork
+from classes.LeaveToWork import LeaveToWork
+from classes.OfflineWork import OfflineWork
 
 from constants.COMMAND import IDENTIFIER     # 상수
 
@@ -16,12 +18,12 @@ def isAttendanceCommand(message):   # Attendance 명령어인지 확인하는 �
         return False
 
 
-def controlAttendanceCommand(message, say):      # 출석 관련 명령어 제어문
+def createAttendanceCommand(message, say):      # 출석명령어 객체 생성문
     if message.text.startswith(IDENTIFIER.GOTOWORK):    # !출근
-        works = GoToWork(message, say)
+        return GoToWork(message, say)
     elif message.text.startswith(IDENTIFIER.LEAVETOWORK):  # !퇴근
-        works = LeaveToWork(message, say)
+        return LeaveToWork(message, say)
     elif message.text.startswith(IDENTIFIER.OFFLINE):   # !오프
-        works = OfflineWork(message, say)
-
-    works.sayCommand()      # 커맨드 출력
+        return OfflineWork(message, say)
+    else:
+        return None

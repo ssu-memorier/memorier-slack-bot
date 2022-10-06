@@ -49,5 +49,4 @@ def isTimeInBetween(timestamp, baseTime):   # 해당 시간이 구하고자하�
     endTimestamp = time.mktime(endTime.timetuple()) + \
         DATE.DIFF_TIMESTAMP_GMT9  # 기준 종료시간
 
-    print(timestamp, startTimestamp, endTimestamp)
     return True if startTimestamp <= float(timestamp) <= endTimestamp else False

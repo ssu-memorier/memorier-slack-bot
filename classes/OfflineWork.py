@@ -28,15 +28,15 @@ class OfflineWork(Attendance):  # !오프 (시간)
     def makeOutput(self):
         if self.isNotAvailableOffTime():
             output = error.sayError(
-                self.say, ERROR.TIMEFORMAT_TEXT)  # 시간 입력 형식 에러
+                self.say, ERROR.TIMEFORMAT_ERROR)  # 시간 입력 형식 에러
         elif date.isTimeInBetween(self.message.ts, DATE.CORE_TIME):
             output = error.sayError(
-                self.say, ERROR.CORETIME_TEXT)  # 코어타임 해당 명령어 사용 금지
+                self.say, ERROR.CANT_USE_COMMAND_IN_CORETIME)  # 코어타임 해당 명령어 사용 금지
         elif self.checkError():     # 에러 체크 진행
             output = self.getAttendanceMessage()
         else:
             output = error.sayError(
-                self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
+                self.say, ERROR.FORMAT_ERROR)  # 명령어 형식 에러
 
         return output
 

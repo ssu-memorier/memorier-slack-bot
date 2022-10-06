@@ -18,7 +18,7 @@ def addAllCommands(app):      # 모든 Command가 실행되도록 추가
         elif attendance.isAttendanceCommand(msg):   # Attendance 명령어 확인
             command = attendance.createAttendanceCommand(msg, say)
         else:
-            error.sayError(say, ERROR.INPUTERROR_TEXT)
+            error.sayError(say, ERROR.INPUT_ERROR)
             return
 
         command.sayCommand()

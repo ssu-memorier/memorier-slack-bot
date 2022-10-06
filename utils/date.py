@@ -41,12 +41,12 @@ def isTimeInBetween(timestamp, baseTime):   # 해당 시간이 구하고자하�
                          baseTime[DATE.START_TIME][DATE.HOUR],
                          baseTime[DATE.START_TIME][DATE.MIN], 0)
     startTimestamp = time.mktime(
-        startTime.timetuple()) + DATE.DIFF_TIMESTAMP_GMT9  # 기준 시작시간
+        startTime.timetuple()) - DATE.DIFF_TIMESTAMP_GMT9  # 기준 시작시간
 
     endTime = datetime(checkdate.year, checkdate.month, checkdate.day,
                        baseTime[DATE.END_TIME][DATE.HOUR],
                        baseTime[DATE.END_TIME][DATE.MIN], 0)
-    endTimestamp = time.mktime(endTime.timetuple()) + \
+    endTimestamp = time.mktime(endTime.timetuple()) - \
         DATE.DIFF_TIMESTAMP_GMT9  # 기준 종료시간
 
     return True if startTimestamp <= float(timestamp) <= endTimestamp else False

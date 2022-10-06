@@ -2,7 +2,7 @@ from classes.Attendance import Attendance
 from constants.COMMAND import ATTENDANCE
 
 from constants import ERROR, DATE
-from utils import error
+from utils import error, date
 
 
 class OfflineWork(Attendance):  # !오프 (시간)
@@ -29,6 +29,9 @@ class OfflineWork(Attendance):  # !오프 (시간)
         if self.isNotAvailableOffTime():
             output = error.sayError(
                 self.say, ERROR.TIMEFORMAT_TEXT)  # 시간 입력 형식 에러
+        elif date.isTimeInBetween(self.message.ts, DATE.CORE_TIME):
+            output = error.sayError(
+                self.say, ERROR.CORETIME_TEXT)  # 코어타임 해당 명령어 사용 금지
         elif self.checkError():     # 에러 체크 진행
             output = self.getAttendanceMessage()
         else:
@@ -54,6 +57,9 @@ class OfflineWork(Attendance):  # !오프 (시간)
 
     def isNotAvailableOffTime(self):   # 오프시간이 근무시간(8시간) 초과인 경우 에러
         messageToken = self.message.text.split()
+        if len(messageToken) < 2:       # 오프는 최소 1개의 인자를 받아야함
+            return False
+
         if not messageToken[ATTENDANCE.OFFLINE_TIME_INDEX].isdigit():
             return True
         elif int(messageToken[ATTENDANCE.OFFLINE_TIME_INDEX]) > DATE.WORKINGHOUR or \

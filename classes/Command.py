@@ -24,7 +24,7 @@ class Command():       # 기본 커맨드 클래스
             output = ERROR.ERROR_TAG
         else:
             output = error.sayError(
-                self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
+                self.say, ERROR.FORMAT_ERROR)  # 명령어 형식 에러
 
         return output
 

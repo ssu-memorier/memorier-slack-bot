@@ -2,7 +2,7 @@ from constants import CHANNEL
 from constants.COMMAND import ATTENDANCE
 from classes.Command import Command
 
-from constants import ERROR, DATE
+from constants import ERROR
 from utils import error
 
 
@@ -23,7 +23,7 @@ class Attendance(Command):     # 출석 커맨드
             output = self.getAttendanceMessage()
         else:
             output = error.sayError(
-                self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
+                self.say, ERROR.FORMAT_ERROR)  # 명령어 형식 에러
 
         return output
 

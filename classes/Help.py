@@ -20,7 +20,7 @@ class Help(Command):     # 도움 커맨드
             output = self.getHelpMessage()
         else:
             output = error.sayError(
-                self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
+                self.say, ERROR.FORMAT_ERROR)  # 명령어 형식 에러
 
         return output
 

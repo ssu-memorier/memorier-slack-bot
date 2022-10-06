@@ -27,12 +27,12 @@ class GoToWork(Attendance):  # !출근
     def makeOutput(self):      # 취침시간 확인 추가
         if date.isTimeInBetween(self.message.ts, DATE.SLEEPING_TIME):
             output = error.sayError(
-                self.say, ERROR.SLEEPING_TEXT)  # 취침시간
+                self.say, ERROR.CANT_USE_COMMAND_IN_SLEEPINGTIME)  # 취침시간
         elif self.checkError():     # 에러 체크 진행
             output = self.getAttendanceMessage()
         else:
             output = error.sayError(
-                self.say, ERROR.FORMATERROR_TEXT)  # 명령어 형식 에러
+                self.say, ERROR.FORMAT_ERROR)  # 명령어 형식 에러
 
         return output
 

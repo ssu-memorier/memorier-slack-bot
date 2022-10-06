@@ -31,8 +31,8 @@ def getTs2HourMinute(ts):        # Timestamp to get Hour, Minute
 
 
 def convertTs2SeoulTime(ts):        # Convert timestamp to Seoul Timestamp
-    basedateTime = datetime.fromtimestamp(float(ts))
-    seoulDateTime = basedateTime.astimezone(timezone(DATE.ASIA_SEOUL))
+    baseDateTime = datetime.fromtimestamp(float(ts))
+    seoulDateTime = baseDateTime.astimezone(timezone(DATE.ASIA_SEOUL))
     return time.mktime(seoulDateTime.timetuple())
 
 

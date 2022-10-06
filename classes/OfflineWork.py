@@ -37,6 +37,21 @@ class OfflineWork(Attendance):  # !오프 (시간)
 
         return output
 
+    def getAttendanceMessage(self):      # 출력할 텍스트
+       # date : Command가 실행된 날짜데이터(YY-MM-DD HH:MM:SS)
+        if self.command == ATTENDANCE.OW:  # 자리비움의 경우 시간까지 입력
+            messageToken = self.message.text.split()
+            if len(messageToken) == 2:  # !오프 (시간) : 실시간 오프
+                # tokens = [커맨드(자리비움), 시간]
+                [_, offTime] = self.message.text.split()
+
+                return f"[ <@{self.message.userID}> ] {self.message.date}\t{offTime}시간 {ATTENDANCE.COMMAND_NAME[self.command]}"
+            else:   # !오프 (예약시간) (시간):오프 예약
+                [_, offTime, reserveTime] = self.message.text.split()
+                return f"[ <@{self.message.userID}> ] {self.message.date}\t{reserveTime}부터 {offTime}시간 {ATTENDANCE.COMMAND_NAME[self.command]} 예약"
+        else:
+            return f"[ <@{self.message.userID}> ] {self.message.date}\t{ATTENDANCE.COMMAND_NAME[self.command]}"
+
     def isNotAvailableOffTime(self):   # 오프시간이 근무시간(8시간) 초과인 경우 에러
         messageToken = self.message.text.split()
         if not messageToken[ATTENDANCE.OFFLINE_TIME_INDEX].isdigit():

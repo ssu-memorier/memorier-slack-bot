@@ -1,1 +1,4 @@
 .github/*
+assets/
+/*/__pycache__
+backup.py

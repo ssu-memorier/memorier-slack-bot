@@ -30,12 +30,17 @@ def getTs2HourMinute(ts):        # Timestamp to get Hour, Minute
     return date.hour, date.minute
 
 
+def convertTs2SeoulTime(ts):        # Convert timestamp to Seoul Timestamp
+    baseDateTime = datetime.fromtimestamp(float(ts))
+    seoulDateTime = baseDateTime.astimezone(timezone(DATE.ASIA_SEOUL))
+    return time.mktime(seoulDateTime.timetuple())
+
+
 ''' Calculate the time between '''
 
 
 def isTimeInBetween(timestamp, baseTime):   # 해당 시간이 구하고자하는 시간 사이에 있는가
-    checkdate = datetime.fromtimestamp(
-        float(timestamp), timezone(DATE.ASIA_SEOUL)).date()  # 오늘 날짜값 추출
+    checkdate = datetime.fromtimestamp(float(timestamp)).date()  # 오늘 날짜값 추출
 
     startTime = datetime(checkdate.year, checkdate.month, checkdate.day,
                          baseTime[DATE.START_TIME][DATE.HOUR],
